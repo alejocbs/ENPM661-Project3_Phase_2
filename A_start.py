@@ -10,12 +10,16 @@ if userdefined:
     goal_nodex = int(input("Please enter Goal point X coordinate: "))
     goal_nodey = int(input("Please enter Goal point Y coordinate: "))
     clearance = int(input("Please enter the Radius of the robot"))
+    step = int(input("Please enter the value of the step"))
+
+
 else:
-    start_nodex = 5
-    start_nodey = 15
-    goal_nodex = 200
-    goal_nodey = 190
+    start_nodex = 150
+    start_nodey = 10
+    goal_nodex = 151
+    goal_nodey = 99
     clearance = 0
+    step = 1
 
 start_pos = (start_nodex, start_nodey)
 goal_pos = (goal_nodex, goal_nodey)
@@ -25,22 +29,21 @@ plt.plot(goal_nodex, goal_nodey, "Dr")
 start_time = time.time()
 
 if __name__ == '__main__':
-    final_obs, wall_x, wall_y = finalmap(clearance)
-    if start_pos in (zip(wall_x, wall_y) or final_obs):
+    if finalmap(clearance, start_nodex, start_nodey)==-1:
         print("Start Position in obstacle space")
 
-    elif goal_pos in (zip(wall_x, wall_y) or final_obs):
+    elif finalmap(clearance, goal_nodex, goal_nodey)==-1:
         print("goal Position in obstacle space")
 
     else:
-        path = dijkstra(start_pos, goal_pos, final_obs)
-        if path is not None:
-            scatterx = [x[0] for x in path]
-            scattery = [x[1] for x in path]
-            plt.plot(scatterx, scattery, color='r', linewidth=4)
-            plt.savefig('path_rigid.png')
-            plt.show()
-            elapsed_time = time.time() - start_time
-            print("Time Required to Solve ", round(elapsed_time, 2), "seconds")
-        else:
-            print("No path found")
+         path = Astart(start_pos, goal_pos, step)
+    #     if path is not None:
+    #         scatterx = [x[0] for x in path]
+    #         scattery = [x[1] for x in path]
+    #         plt.plot(scatterx, scattery, color='r', linewidth=4)
+    #         plt.savefig('path_rigid.png')
+    #         plt.show()
+    #         elapsed_time = time.time() - start_time
+    #         print("Time Required to Solve ", round(elapsed_time, 2), "seconds")
+    #     else:
+    #         print("No path found")

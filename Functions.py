@@ -1,17 +1,16 @@
 import heapq
 import math
 import matplotlib.pyplot as plt
+from finalmap import *
 
 
-def ActionSet():
-    all_moves = [[1, 0, 1],
-                 [0, 1, 1],
-                 [-1, 0, 1],
-                 [0, -1, 1],
-                 [1, 1, math.sqrt(2)],
-                 [1, -1, math.sqrt(2)],
-                 [-1, -1, math.sqrt(2)],
-                 [-1, 1, math.sqrt(2)]]
+
+def ActionSet(d):
+    all_moves = [[d*1, 0, 0],                                # parallel to x
+                 [d*math.cos(30),  d*math.sin(30), 30],         # positive 30
+                 [d*math.cos(60),  d*math.sin(60), 60],         # positive 60
+                 [d*math.cos(-30), d*math.sin(-30), -30],        # negative 30
+                 [d*math.cos(-60), d*math.sin(-60), -60]]        # negative 60
     return all_moves
 
 
@@ -32,13 +31,13 @@ def backtracking(closed_list):
     return backtrack[::-1]
 
 
-def dijkstra(start_pos, goal_pos, obstacle_space):
+def Astart(start_pos, goal_pos,step):
     # each node has three attributes 1) Parent 2) co-ordinates 3) Cost to Come
     start_node = (0, start_pos, None)
     goal_node = (0, goal_pos, None)
     plot_x = []
     plot_y = []
-    eightspace = ActionSet()
+    space = ActionSet(step)
     open_list = []
     closed_list = []
     heapq.heappush(open_list, start_node)
@@ -49,7 +48,7 @@ def dijkstra(start_pos, goal_pos, obstacle_space):
         heapq.heappush(closed_list, current_node)
         plot_x.append(current_node[1][0])
         plot_y.append(current_node[1][1])
-
+        print(current_node)
         if len(plot_y) % 1000 == 0:
             plt.plot(goal_pos[0], goal_pos[1], "hb")
             plt.plot(plot_x, plot_y, '.y')
@@ -61,23 +60,30 @@ def dijkstra(start_pos, goal_pos, obstacle_space):
             final_path = backtracking(closed_list)
             return final_path
 
-        for newnode_pos in eightspace:
+        for newnode_pos in space:
 
             # Get node position
             node_position = (current_node[1][0] + newnode_pos[0],
                              current_node[1][1] + newnode_pos[1])
             node_position_cost = current_node[0] + newnode_pos[2]
+            print("Current", node_position[0])
+            print("position", node_position_cost)
+            print("Goal pos", goal_pos)
+            print("difference", goal_pos[0]-node_position[0], goal_pos[1]-node_position[1])
+            d =math.sqrt((goal_pos[0]-node_position[0])**2+(goal_pos[1]-node_position[1])**2)
 
             node_parent = current_node[1]
             # Bounds check
-            if node_position[0] > (len(obstacle_space) - 1) or node_position[0] < 0 or node_position[1] > (len(obstacle_space[1]) - 1) or node_position[1] < 0:
-                continue
+            #if node_position[0] > (len(obstacle_space) - 1) or node_position[0] < 0 or node_position[1] > (len(obstacle_space[1]) - 1) or node_position[1] < 0:
+            #    continue
 
             # Ignore the locations in map which are obstacles
-            if obstacle_space[node_position[0]][node_position[1]] != 0:
-                continue
+            # if obstacle_space[node_position[0]][node_position[1]] != 0:
+            #     continue
 
             # Creating cost_map
-            obstacle_space[node_position[0]][node_position[1]] = 1
-            new_node = (node_position_cost, node_position, node_parent)
+            obstacle_space[round(node_position[0])][round(node_position[1])] = 1
+            new_node = (round(node_position_cost+d), node_position, node_parent)
+            print(new_node)
+            a = input(" ")
             heapq.heappush(open_list, new_node)
