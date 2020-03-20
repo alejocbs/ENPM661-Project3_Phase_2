@@ -14,9 +14,9 @@ if userdefined:
 
 
 else:
-    start_nodex = 150
+    start_nodex = 15
     start_nodey = 10
-    goal_nodex = 151
+    goal_nodex = 200
     goal_nodey = 99
     clearance = 0
     step = 1

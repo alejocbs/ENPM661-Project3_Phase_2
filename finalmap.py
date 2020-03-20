@@ -21,5 +21,5 @@ def finalmap(clearance, x, y):
             elif  ((y - 13 * x + (140 - 5* clearance)<=0) and (0 <= y - x - (100 - clearance)) and (5 * y + 7 * x - (1110 + 5*clearance)<= 0) and (y - (185 + clearance)<=0) and (x - 75<=0) and
                 (0<= 10 * y + 13 * x - (2175 + clearance)) and (5 * y + 7 * x - (1450 + 5*clearance)<=0) and (0<=5 * y - 6 * x - (150 + clearance)) and (0<= x - 75)):
                 return -1
-        else:
-            return obs, boundary_x, boundary_y
+            else:
+                return x,y

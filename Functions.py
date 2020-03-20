@@ -41,14 +41,13 @@ def Astart(start_pos, goal_pos,step):
     open_list = []
     closed_list = []
     heapq.heappush(open_list, start_node)
-    obstacle_space[start_node[1][0]][start_node[1][1]] = 1
+    # obstacle_space[start_node[1][0]][start_node[1][1]] = 1
 
     while len(open_list) > 0:
         current_node = heapq.heappop(open_list)
         heapq.heappush(closed_list, current_node)
         plot_x.append(current_node[1][0])
         plot_y.append(current_node[1][1])
-        print(current_node)
         if len(plot_y) % 1000 == 0:
             plt.plot(goal_pos[0], goal_pos[1], "hb")
             plt.plot(plot_x, plot_y, '.y')
@@ -65,12 +64,10 @@ def Astart(start_pos, goal_pos,step):
             # Get node position
             node_position = (current_node[1][0] + newnode_pos[0],
                              current_node[1][1] + newnode_pos[1])
-            node_position_cost = current_node[0] + newnode_pos[2]
-            print("Current", node_position[0])
-            print("position", node_position_cost)
-            print("Goal pos", goal_pos)
-            print("difference", goal_pos[0]-node_position[0], goal_pos[1]-node_position[1])
-            d =math.sqrt((goal_pos[0]-node_position[0])**2+(goal_pos[1]-node_position[1])**2)
+            d = math.sqrt((goal_pos[0] - node_position[0]) ** 2 + (goal_pos[1] - node_position[1]) ** 2)
+
+            node_position_cost = current_node[0] + d
+
 
             node_parent = current_node[1]
             # Bounds check
@@ -82,8 +79,6 @@ def Astart(start_pos, goal_pos,step):
             #     continue
 
             # Creating cost_map
-            obstacle_space[round(node_position[0])][round(node_position[1])] = 1
+            # obstacle_space[round(node_position[0])][round(node_position[1])] = 1
             new_node = (round(node_position_cost+d), node_position, node_parent)
-            print(new_node)
-            a = input(" ")
             heapq.heappush(open_list, new_node)
