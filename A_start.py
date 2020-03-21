@@ -20,11 +20,11 @@ if userdefined:
 else:
     start_nodex = 10
     start_nodey = 10
-    goal_nodex = 10
-    goal_nodey = 100
+    goal_nodex = 100
+    goal_nodey = 195
     clearance = 0
     d = 1
-    thresho = 0.5
+    thresho = 1
     radius = 2
     # start_angle = 30
     # goal_angle = 30
@@ -33,24 +33,32 @@ start_angle = 30
 goal_angle = 30
 start_pos = (start_nodex, start_nodey, start_angle)
 goal_pos = (goal_nodex, goal_nodey, goal_angle)
-plt.plot(start_nodex, start_nodey, "Dr")
-plt.plot(goal_nodex, goal_nodey, "Dr")
-
+plt.plot(start_nodex, start_nodey, "Dr",color='b')
+plt.plot(goal_nodex, goal_nodey, "Dr",color='g')
 start_time = time.time()
 
+
+
+
 if __name__ == '__main__':
+    for x in range(300):
+        for y in range(200):
+            Aux = isobstacle(clearance, x, y,10)
+            if Aux == False:
+                plt.plot(x, y, color='g')
+
     if isobstacle(clearance, start_nodex, start_nodey, thresho):
         print("Start Position in obstacle space")
 
     elif isobstacle(clearance, goal_nodex, goal_nodey, thresho):
         print("goal Position in obstacle space")
-
     else:
         path = A_star(start_pos, goal_pos, d, thresho, radius)
         # print(path)
         if path is not None:
             scatterx = [x[0] for x in path]
             scattery = [x[1] for x in path]
+            plt.plot()
             plt.plot(scatterx, scattery, color='r', linewidth=4)
             plt.savefig('path_rigid.png')
             plt.show()

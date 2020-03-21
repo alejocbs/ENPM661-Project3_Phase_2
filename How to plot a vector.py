@@ -7,7 +7,7 @@ U0 = np.array((2))
 V0 = np.array((-2))
 
 fig, ax = plt.subplots()
-q0 = plt.quiver(X0, Y0, U0, V0,units='xy' ,scale=1,color= 'r',headwidth = 1,headlength=0)
+q0 = plt.quiver(X0, Y0, U0, V0, units='xy' , scale=1,color= 'r',headwidth = 1,headlength=0)
 
 Node=[X0+U0, Y0+V0]
 
