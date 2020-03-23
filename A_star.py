@@ -20,9 +20,9 @@ if userdefined:
 else:
     start_nodex = 10
     start_nodey = 10
-    goal_nodex = 10
+    goal_nodex = 250
     goal_nodey = 100
-    clearance = 0
+    clearance = 5
     d = 1
     thresho = 0.5
     radius = 2
@@ -39,6 +39,7 @@ plt.plot(goal_nodex, goal_nodey, "Dr")
 start_time = time.time()
 
 if __name__ == '__main__':
+    final_obs, wall_x, wall_y = finalmap(clearance)
     if isobstacle(clearance, start_nodex, start_nodey, thresho):
         print("Start Position in obstacle space")
 
@@ -46,8 +47,8 @@ if __name__ == '__main__':
         print("goal Position in obstacle space")
 
     else:
-        path = A_star(start_pos, goal_pos, d, thresho, radius)
-        # print(path)
+        path = Astar(start_pos, goal_pos, d, clearance,thresho)
+        print(path)
         if path is not None:
             scatterx = [x[0] for x in path]
             scattery = [x[1] for x in path]
