@@ -10,7 +10,7 @@ Fig. Final Obstacle Map
     5) heapq
  Warning - Use of 'heapq' may generate low memory or running out of memory error
 ## Files required in the source directory
-    1) A_start.py
+    1) Astar_rigid.py
     2) finalmap.py
     3) Functions.py
 ## How to run the code-
@@ -20,7 +20,7 @@ Fig. Final Obstacle Map
         True= User inputs the initial and goal configuration.
         False- Pre-defined initial and goal configuration.
  ### Input arguements-
- #### For Rigid Robot(dijkstra_rigid.py)
+ #### For Rigid Robot(astar_rigid.py)
         1) Input Start point x co-ordinate - Enter X co-ordinate of start position.
         2) Input Start point y co-ordinate - Enter Y co-ordinate of start position.
         3) Input Goal point x co-ordinate - Enter X co-ordinate of goal position.
