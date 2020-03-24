@@ -1,7 +1,7 @@
 # ENPM661-Project3_Phase_2
 ## Implementation of A Start algorithm for a Rigid Robot
 Fig. Final Obstacle Map
-    ![alt text](https://github.com/AkshayKurhade/ENPM661-Project2-Dijkstra/blob/master/OldAlgo/map.png "Map Title Text 1")
+    ![alt text](https://github.com/alejocbs/ENPM661-Project3_Phase_2/blob/master/map.png "Map Title Text 1")
 ## Libraries used
     1) Matplotlib
     2) Numpy
