@@ -29,13 +29,17 @@ Fig. Final Obstacle Map
         6) Input Threshold                - Enter a Threshold for the vectors   
         7) Input Radius of the robot      - Enter Radius of the robot
         
-Note: If the radius of the robot is bigger than 15 this will cause the map to look distored. But will still calculate optimal path following the conditions.
+Note: 
+    If the radius of the robot is bigger than 15 this will cause the map to look distored. But will still calculate optimal path             following the conditions.
+    If the step is bigger than the obstacle the vector would jump over it.
+    If vector plot is required uncomment line 85 and 86 from Funtions.py 
  ## Runtime
     Runtime for:
         Start Position=(5,5)
         Goal Position =(295,195)
-        Average ~ 9.2-10.3 seconds
+        Average ~ 100-133.3 seconds when showing no vectors
+        Plotting vectors add 0.01 sec per vector
     Figure:- Final Path for (5,5) to (295,195)
     
-   ![alt text](https://github.com/AkshayKurhade/ENPM661-Project2-Dijkstra/blob/master/OldAlgo/path_point.png "Map Title Text 1")
+   ![alt text](https://github.com/alejocbs/ENPM661-Project3_Phase_2/blob/master/path_rigid.png "Solved point")
    
