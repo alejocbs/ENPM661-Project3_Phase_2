@@ -43,3 +43,6 @@ Note:
     
    ![alt text](https://github.com/alejocbs/ENPM661-Project3_Phase_2/blob/master/path_rigid.png "Solved point")
    
+   ##Video link:
+ https://youtu.be/GoGM4uHsB8g
+   
