@@ -18,19 +18,17 @@ if userdefined:
 
 
 else:
-    start_nodex = 10
-    start_nodey = 10
-    goal_nodex = 250
-    goal_nodey = 100
-    clearance = 5
+    start_nodex = 50
+    start_nodey = 30
+    goal_nodex = 295
+    goal_nodey = 195
+    clearance = 1
     d = 1
-    thresho = 0.5
-    radius = 2
-    # start_angle = 30
-    # goal_angle = 30
+    thresho = 1
+    radius = 1
+    start_angle = 60
+    goal_angle = 30
 d=5
-start_angle = 30
-goal_angle = 30
 start_pos = (start_nodex, start_nodey, start_angle)
 goal_pos = (goal_nodex, goal_nodey, goal_angle)
 plt.plot(start_nodex, start_nodey, "Dr")

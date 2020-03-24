@@ -21,11 +21,12 @@ def isobstacle(clearance, x, y, thresh):
                 0 <= 9 * y - 5 * x + 205 + 9 * clearance) and (0 <= 65 * y + 38 * x - (5560 - 65 * clearance)):
             return True
         elif ((y - 13 * x + (140 - 5 * clearance) <= 0) and (0 <= y - x - (100 - clearance)) and (
-                5 * y + 7 * x - (1110 + 5 * clearance) <= 0) and (y - (185 + clearance) <= 0) and (x - 75 <= 0) and
-              (0 <= 10 * y + 13 * x - (2175 + clearance)) and (5 * y + 7 * x - (1450 + 5 * clearance) <= 0) and (
-                      0 <= 5 * y - 6 * x - (150 + clearance)) and (0 <= x - 75)):
+                5 * y + 7 * x - (1110 + 5 * clearance) <= 0)):
             return True
-
+        elif (0 <= y - x - (100 - clearance)) and (5 * y + 7 * x - (1110 + 5 * clearance) >= 0) and (x <=185):
+            return True
+        elif (0 >= y - x - (100 - clearance)) and (5 * y + 7 * x - (1110 + 5 * clearance) >= 0) and (5 * y + 7 * x - (1450 + 5 * clearance) <= 0) and (0 <= 5 * y - 6 * x - (150 + clearance)):
+            return True
         else:
             return False
 
